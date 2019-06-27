@@ -1,6 +1,7 @@
 """
 patched builtin time classes for use by :class:`hiro.Timeline`
 """
+from __future__ import absolute_import
 import abc
 from datetime import date as realdate
 from datetime import datetime as realdatetime
@@ -42,12 +43,11 @@ class Datetime(realdatetime):
         return cls.utcfromtimestamp(time.time())
 
 @six.add_metaclass(DateMeta)
-class Date(realdate):
+class Date(six.with_metaclass(DateMeta, realdate)):
     """
     used to patch :class:`datetime.date` to follow the rules of the
     parent :class:`hiro.Timeline`
     """
-    __metaclass__ = DateMeta
 
     @classmethod
     def today(cls):

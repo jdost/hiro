@@ -1,6 +1,7 @@
 """
 random utility functions
 """
+from __future__ import absolute_import
 import calendar
 import datetime
 import functools

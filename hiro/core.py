@@ -1,6 +1,7 @@
 """
 timeline & runner implementation
 """
+from __future__ import absolute_import
 import copy
 import inspect
 
@@ -10,7 +11,10 @@ import time
 import datetime
 from six import reraise
 
-import mock
+try:
+    import mock
+except ImportError:
+    from unittest import mock
 from functools import wraps
 from .errors import SegmentNotComplete, TimeOutofBounds
 from .utils import timedelta_to_seconds, chained, time_in_seconds
